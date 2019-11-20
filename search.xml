@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>test</title>
-    <url>/2019/11/20/test/</url>
-    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">测试</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
     <title>js中的一些简写操作</title>
     <url>/2019/02/03/js%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%86%99%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>自从这个博客搭建完，写了一篇怎么搭建hexo后，就再也没动过了，主要是不知道该写点什么（大概是自己的技能掌握的不够全面和深入，没有什么可以拿出来写写的）。<br>这篇就把工作中常常用到的一些js的简写方法记录一下吧，有些简写可以大大提高代码的简洁性，不过也会造成因为某些维护者不知道这种语法导致的维护困难。</p>
