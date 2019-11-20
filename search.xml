@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[js中的一些简写操作]]></title>
-    <url>%2F2019%2F02%2F03%2Fjs%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%86%99%E6%93%8D%E4%BD%9C%2F</url>
-    <content type="text"><![CDATA[自从这个博客搭建完，写了一篇怎么搭建hexo后，就再也没动过了，主要是不知道该写点什么（大概是自己的技能掌握的不够全面和深入，没有什么可以拿出来写写的）。这篇就把工作中常常用到的一些js的简写方法记录一下吧，有些简写可以大大提高代码的简洁性，不过也会造成因为某些维护者不知道这种语法导致的维护困难。 快速给变量赋默认值let fun = (param) =&gt; &#123; param = param || 5; console.log(param);&#125;fun(); // -&gt; 5// 等同于let fun = (param) =&gt; &#123; if(param === undefined) &#123; param = 5; &#125; console.log(param);&#125;fun(); // -&gt; 5 param = param || 5;在这里的作用相当于将param这个参数的默认值设置成5（这种说法不太严谨）在js中，undefined、null、数字0、NaN、空字符串&quot;&quot;等会隐式转换成false，相当于undefined==false，所以在||左边为false时，就会取它右边的值。在es6中，新增了函数参数默认值的写法，如下： let fun = (param=5) =&gt; &#123; console.log(param);&#125;fun(); // -&gt; 5fun(1); // -&gt; 1fun(0); // -&gt; 0fun(undefined); // -&gt; 5fun(false); // -&gt; false只有在参数为undefined的时候才会是默认值 if判断简写typeof fun === 'function' &amp;&amp; fun();// 等同于if(typeof fun === 'function') &#123; fun();&#125; &amp;&amp;操作需要左边的为true，才会执行右边的语句。 判断非空if(!data) &#123; ...&#125;// 等同于if(data === undefined || data === null || data === 0 || data === false || data === NaN || data === "") &#123; ...&#125; 详见第一条，隐式类型转换。 快速转成布尔值let a = 0;console.log(!!a); -&gt; falsea = null;console.log(!!a); -&gt; falsea = "abc";console.log(!!a); -&gt; truea = function() &#123;&#125;;console.log(!!a); -&gt; true !为取反操作，!!负负得正。 深拷贝let data = JSON.parse(JSON.stringify(res)); 快速取当前时间戳let timestamp = +new Date(); // -&gt; 1549179377368// 等同于let timestamp = new Date().valueOf(); 写下来怎么好像都是隐式类型转换的东西。。。说明要正确理解==和===呐。]]></content>
+    <title>test</title>
+    <url>/2019/11/20/test/</url>
+    <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">测试</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>js中的一些简写操作</title>
+    <url>/2019/02/03/js%E4%B8%AD%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AE%80%E5%86%99%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<p>自从这个博客搭建完，写了一篇怎么搭建hexo后，就再也没动过了，主要是不知道该写点什么（大概是自己的技能掌握的不够全面和深入，没有什么可以拿出来写写的）。<br>这篇就把工作中常常用到的一些js的简写方法记录一下吧，有些简写可以大大提高代码的简洁性，不过也会造成因为某些维护者不知道这种语法导致的维护困难。</p>
+<h3 id="快速给变量赋默认值"><a href="#快速给变量赋默认值" class="headerlink" title="快速给变量赋默认值"></a>快速给变量赋默认值</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fun = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">    param = param || <span class="number">5</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;</span><br><span class="line">fun(); <span class="comment">// -&gt; 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">let</span> fun = <span class="function">(<span class="params">param</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span>(param === <span class="literal">undefined</span>) &#123;</span><br><span class="line">        param = <span class="number">5</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;</span><br><span class="line">fun(); <span class="comment">// -&gt; 5</span></span><br></pre></td></tr></table></figure>
+<p><code>param = param || 5;</code>在这里的作用相当于将param这个参数的默认值设置成5（这种说法不太严谨）<br>在js中，<code>undefined、null、数字0、NaN、空字符串&quot;&quot;</code>等会隐式转换成<code>false</code>，相当于<code>undefined==false</code>，所以在<code>||</code>左边为false时，就会取它右边的值。<br><blockquote><p>在es6中，新增了函数参数默认值的写法，如下：</p>
+<p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> fun = <span class="function">(<span class="params">param=<span class="number">5</span></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(param);</span><br><span class="line">&#125;</span><br><span class="line">fun(); <span class="comment">// -&gt; 5</span></span><br><span class="line">fun(<span class="number">1</span>); <span class="comment">// -&gt; 1</span></span><br><span class="line">fun(<span class="number">0</span>); <span class="comment">// -&gt; 0</span></span><br><span class="line">fun(<span class="literal">undefined</span>); <span class="comment">// -&gt; 5</span></span><br><span class="line">fun(<span class="literal">false</span>); <span class="comment">// -&gt; false</span></span><br></pre></td></tr></table></figure>只有在参数为<code>undefined</code>的时候才会是默认值</p>
+</blockquote></p>
+<h3 id="if判断简写"><a href="#if判断简写" class="headerlink" title="if判断简写"></a>if判断简写</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">typeof</span> fun === <span class="string">'function'</span> &amp;&amp; fun();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">if</span>(<span class="keyword">typeof</span> fun === <span class="string">'function'</span>) &#123;</span><br><span class="line">    fun();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>&amp;&amp;</code>操作需要左边的为true，才会执行右边的语句。</p>
+<h3 id="判断非空"><a href="#判断非空" class="headerlink" title="判断非空"></a>判断非空</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(!data) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">if</span>(data === <span class="literal">undefined</span> || data === <span class="literal">null</span> || data === <span class="number">0</span> || data === <span class="literal">false</span> || data === <span class="literal">NaN</span> || data === <span class="string">""</span>) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>详见第一条，隐式类型转换。</p>
+<h3 id="快速转成布尔值"><a href="#快速转成布尔值" class="headerlink" title="快速转成布尔值"></a>快速转成布尔值</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">console</span>.log(!!a); -&gt; <span class="literal">false</span></span><br><span class="line">a = <span class="literal">null</span>;</span><br><span class="line"><span class="built_in">console</span>.log(!!a); -&gt; <span class="literal">false</span></span><br><span class="line">a = <span class="string">"abc"</span>;</span><br><span class="line"><span class="built_in">console</span>.log(!!a); -&gt; <span class="literal">true</span></span><br><span class="line">a = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(!!a); -&gt; <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p><code>!</code>为取反操作，<code>!!</code>负负得正。</p>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> data = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(res));</span><br></pre></td></tr></table></figure>
+<h3 id="快速取当前时间戳"><a href="#快速取当前时间戳" class="headerlink" title="快速取当前时间戳"></a>快速取当前时间戳</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> timestamp = +<span class="keyword">new</span> <span class="built_in">Date</span>(); <span class="comment">// -&gt; 1549179377368</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line"><span class="keyword">let</span> timestamp = <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();</span><br></pre></td></tr></table></figure>
+<p>写下来怎么好像都是隐式类型转换的东西。。。说明要正确理解<code>==</code>和<code>===</code>呐。</p>
+]]></content>
       <categories>
         <category>javascript</category>
       </categories>
@@ -12,9 +31,79 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[记一下第一次搭Hexo]]></title>
-    <url>%2F2018%2F09%2F11%2FHexo%2F</url>
-    <content type="text"><![CDATA[闲来无事，终于着手搭建自己的第一个博客了（其实很久前就想弄的，一直拖到现在…）。搜了一圈，还是Hexo简单点。第一篇就记一下搭建过程吧（其实是根本没想好有什么好写的）。分两篇，这一篇介绍下Hexo的搭建 先丢两个官方文档HexoNexT 前期准备环境 前端嘛，都懂的，node和npm少不了，去官网下就可以了。如果你先npm安装node_modules包的时候太慢，可以用cnpm。 git必备，官网，Git bash也是个好东西。 github 注册登录就不说了…在github新建一个[你的github用户名].github.io的项目，注意，一定要是你的github用户名，新建后，要过一段时间才能生效，可以直接访问https://[你的github用户名].github.io 开始搭建安装1$ npm install -g hexo-cli 或1$ cnpm install -g hexo-cli ps: 顺便说一句代码块的问题，比如我开启了代码块行号显示，但是某些代码块又不想显示行号，可以使用类似下面的写法，必须要用codeblock标签才行，用反引号好像不行，主要是line_number:false，这个官网文档上没有，我找了下源码才看到的：123&#123;% codeblock line_number:false %&#125;alert(&apos;Hello World!&apos;);&#123;% endcodeblock %&#125; 新建Hexo项目进入一个硬盘区域，执行命令123$ hexo init &lt;project name&gt;$ cd &lt;project name&gt;$ npm install 第一个命令：初始化一个hexo项目，&lt;project name&gt;就是项目名称，可以自己取第二个命令：进入刚初始化完成的项目文件夹第三个命令：安装项目依赖 新建完成后，目录如下.├── _config.yml├── package.json├── scaffolds├── source| ├── _drafts| └── _posts└── themes 个性化配置Hexo分为两种配置，一个是项目配置，对应项目根目录下的_config.yml文件；一个是主题配置，对应themes/your_theme下的_config.yml文件。这里先说说常用的项目配置。 YMAL语法首先简单了解下YAML的语法，如下，参考 favicon: small: /images/favicon-16x16-next.png #ms_browserconfig: /images/browserconfig.xmlkeywords: "Hexo, NexT"# Set rss to specific value if you have burned your feed already.rss: false 大小写敏感 使用缩进表示层级关系 禁止使用tab缩进，只能使用空格键 缩进长度没有限制，只要元素对齐就表示这些元素属于一个层级 使用#表示注释 字符串可以不用引号标注 冒号后面要加一个空格 常用配置网站相关配置 参数 描述 title 网站标题 subtitle 网站副标题 description 网站描述，可用来SEO优化 keywords 网站关键词，可用来SEO优化 author 作者 language 网站语言 主题1theme: next # 默认landscape 分页相关1per_page: 10 # 每页显示的文章量 (0 = 关闭分页功能) 发布相关deploy: type: git # 如果要用github.io做主页的话配置为 [你的github用户名].github.io的项目地址 repository: https://github.com/xxx/xxx.github.io branch: master 启动本地服务$ hexo server 可简写为 hexo s，启动后浏览器中打开http:localhost:4000就可以看到页面了 发布$ hexo deploy 可简写为 hexo d]]></content>
+    <title>记一下第一次搭Hexo</title>
+    <url>/2018/09/11/Hexo/</url>
+    <content><![CDATA[<p>闲来无事，终于着手搭建自己的第一个博客了（其实很久前就想弄的，一直拖到现在…）。搜了一圈，还是Hexo简单点。第一篇就记一下搭建过程吧（其实是根本没想好有什么好写的）。<br><strong>分两篇，这一篇介绍下Hexo的搭建</strong></p>
+<a id="more"></a>
+<h2 id="先丢两个官方文档"><a href="#先丢两个官方文档" class="headerlink" title="先丢两个官方文档"></a>先丢两个官方文档</h2><blockquote><p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">Hexo</a><br><a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">NexT</a></p>
+</blockquote>
+<h2 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h2><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><ul>
+<li>前端嘛，都懂的，node和npm少不了，去<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">官网</a>下就可以了。如果你先npm安装<code>node_modules</code>包的时候太慢，可以用<a href="http://npm.taobao.org/" target="_blank" rel="noopener">cnpm</a>。</li>
+<li><code>git</code>必备，<a href="https://git-scm.com/" target="_blank" rel="noopener">官网</a>，<code>Git bash</code>也是个好东西。</li>
+</ul>
+<h3 id="github"><a href="#github" class="headerlink" title="github"></a>github</h3><ol>
+<li>注册登录就不说了…在github新建一个<code>[你的github用户名].github.io</code>的项目，注意，一定要是你的github用户名，新建后，要过一段时间才能生效，可以直接访问https://[你的github用户名].github.io</li>
+</ol>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>或<br><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure></p>
+<p>ps: 顺便说一句代码块的问题，比如我开启了代码块行号显示，但是某些代码块又不想显示行号，可以使用类似下面的写法，必须要用codeblock标签才行，用反引号好像不行，主要是<code>line_number:false</code>，这个官网文档上没有，我找了下源码才看到的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock line_number:false %&#125;</span><br><span class="line">alert(&apos;Hello World!&apos;);</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="新建Hexo项目"><a href="#新建Hexo项目" class="headerlink" title="新建Hexo项目"></a>新建Hexo项目</h3><p>进入一个硬盘区域，执行命令<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo init &lt;project name&gt;</span><br><span class="line">$ cd &lt;project name&gt;</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
+<p>第一个命令：初始化一个hexo项目，<code>&lt;project name&gt;</code>就是项目名称，可以自己取<br>第二个命令：进入刚初始化完成的项目文件夹<br>第三个命令：安装项目依赖</p>
+<p>新建完成后，目录如下<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.</span><br><span class="line">├── _config.yml</span><br><span class="line">├── package.json</span><br><span class="line">├── scaffolds</span><br><span class="line">├── source</span><br><span class="line">|   ├── _drafts</span><br><span class="line">|   └── _posts</span><br><span class="line">└── themes</span><br></pre></td></tr></table></figure></p>
+<h2 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h2><p>Hexo分为两种配置，一个是项目配置，对应项目根目录下的<code>_config.yml</code>文件；一个是主题配置，对应<code>themes/your_theme</code>下的<code>_config.yml</code>文件。这里先说说常用的项目配置。</p>
+<h3 id="YMAL语法"><a href="#YMAL语法" class="headerlink" title="YMAL语法"></a>YMAL语法</h3><p>首先简单了解下YAML的语法，如下，<a href="https://ansible-tran.readthedocs.io/en/latest/docs/YAMLSyntax.html" target="_blank" rel="noopener">参考</a></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">favicon:</span></span><br><span class="line"><span class="attr">  small:</span> <span class="string">/images/favicon-16x16-next.png</span></span><br><span class="line">  <span class="comment">#ms_browserconfig: /images/browserconfig.xml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">keywords:</span> <span class="string">"Hexo, NexT"</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Set rss to specific value if you have burned your feed already.</span></span><br><span class="line"><span class="attr">rss:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>大小写敏感 </li>
+<li>使用缩进表示层级关系 </li>
+<li>禁止使用tab缩进，只能使用空格键</li>
+<li>缩进长度没有限制，只要元素对齐就表示这些元素属于一个层级</li>
+<li>使用#表示注释 </li>
+<li>字符串可以不用引号标注</li>
+<li>冒号后面要加一个空格</li>
+</ol>
+<h3 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h3><h4 id="网站相关配置"><a href="#网站相关配置" class="headerlink" title="网站相关配置"></a>网站相关配置</h4><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>网站标题</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>网站副标题</td>
+</tr>
+<tr>
+<td>description</td>
+<td>网站描述，可用来SEO优化</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>网站关键词，可用来SEO优化</td>
+</tr>
+<tr>
+<td>author</td>
+<td>作者</td>
+</tr>
+<tr>
+<td>language</td>
+<td>网站语言</td>
+</tr>
+</tbody>
+</table>
+<h4 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">theme: next # 默认landscape</span><br></pre></td></tr></table></figure>
+<h4 id="分页相关"><a href="#分页相关" class="headerlink" title="分页相关"></a>分页相关</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">per_page: 10 # 每页显示的文章量 (0 = 关闭分页功能)</span><br></pre></td></tr></table></figure>
+<h4 id="发布相关"><a href="#发布相关" class="headerlink" title="发布相关"></a>发布相关</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line">  <span class="comment"># 如果要用github.io做主页的话配置为 [你的github用户名].github.io的项目地址</span></span><br><span class="line"><span class="attr">  repository:</span> <span class="attr">https://github.com/xxx/xxx.github.io</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<h2 id="启动本地服务"><a href="#启动本地服务" class="headerlink" title="启动本地服务"></a>启动本地服务</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>可简写为 <code>hexo s</code>，启动后浏览器中打开<code>http:localhost:4000</code>就可以看到页面了</p>
+<h2 id="发布"><a href="#发布" class="headerlink" title="发布"></a>发布</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>可简写为 <code>hexo d</code></p>
+]]></content>
       <tags>
         <tag>Hexo</tag>
         <tag>NexT</tag>
